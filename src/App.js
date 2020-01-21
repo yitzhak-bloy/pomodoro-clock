@@ -1,10 +1,11 @@
 import React from 'react';
+import PomodoroClock from './PomodoroClock'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>שלום אפליקציה</h1>
+      <PomodoroClock />
     </div>
   );
 }
