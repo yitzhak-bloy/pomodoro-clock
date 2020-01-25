@@ -10,8 +10,16 @@ class PomodoroClock extends Component {
     super(props);
     this.state = {
       sessionLength: 25,
-      breakLength: 5
+      breakLength: 5,
+      minutes: 0,
+      seconds: 0
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      minutes: this.state.sessionLength
+    })
   }
 
   handleClickSessionDecrement = () => {
@@ -38,6 +46,26 @@ class PomodoroClock extends Component {
     })
   }
 
+  myTimerMinutes = () => {
+    this.setState ({
+      minutes: (this.state.minutes ? this.state.minutes - 1 : this.state.sessionLength)
+    })
+  }
+
+  myTimer = () => {
+    this.setState ({
+      seconds: (this.state.seconds ? this.state.seconds - 1 : this.state.seconds = 59)
+    })
+  }
+
+  handleClickStart = () => {
+    setTimeout(this.setState ({
+      minutes: this.state.minutes - 1
+    }), 1000)
+    setInterval(this.myTimerMinutes, 60000);
+    setInterval(this.myTimer, 1000);
+  }
+
   render() {
     return (
       <div className="PomodoroClock">
@@ -54,7 +82,11 @@ class PomodoroClock extends Component {
           breakLength={this.state.breakLength}
         />
         <h1>Timer שלום אפליקציה</h1>
-        <Timer />
+        <Timer
+          minutes={this.state.minutes}
+          seconds={this.state.seconds}
+          handleClickStart={this.handleClickStart}
+        />
       </div>
     );
   }
