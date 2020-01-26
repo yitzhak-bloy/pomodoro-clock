@@ -59,10 +59,10 @@ class PomodoroClock extends Component {
   }
 
   handleClickStart = () => {
-    setTimeout(this.setState ({
-      minutes: this.state.minutes - 1
-    }), 1000)
-    setInterval(this.myTimerMinutes, 60000);
+    setTimeout(() => {this.setState ({
+      minutes: (this.state.minutes ? this.state.minutes - 1 : this.state.sessionLength)
+    })}, 1000)
+    setInterval(this.myTimerMinutes, 60 * 1000);
     setInterval(this.myTimer, 1000);
   }
 
