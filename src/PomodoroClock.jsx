@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+// import { accurateInterval } from 'accurate-interval'
+
+
 
 import Session from './components/Session';
 import Break from './components/Break';
 import Timer from './components/Timer';
+const accurateInterval = require('accurate-interval');
+
 // import './PomodoroClock.css';
 
 class PomodoroClock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sessionLength: 25,
+      sessionLength: 12,
       breakLength: 5,
       minutes: 0,
       seconds: 0
@@ -47,23 +52,43 @@ class PomodoroClock extends Component {
   }
 
   myTimerMinutes = () => {
+    this.state.minutes ?
     this.setState ({
-      minutes: (this.state.minutes ? this.state.minutes - 1 : this.state.sessionLength)
+      minutes: this.state.minutes - 1
+    })
+    :
+    this.setState ({
+      minutes: this.state.sessionLength
     })
   }
 
-  myTimer = () => {
+  myTimerSeconds = () => {
+    this.state.seconds ?
     this.setState ({
-      seconds: (this.state.seconds ? this.state.seconds - 1 : this.state.seconds = 59)
+      seconds: this.state.seconds - 1
+    })
+    :
+    this.setState ({
+      seconds: 59
     })
   }
+
+  mySetTimeout = () => {
+    this.state.minutes ?
+    this.setState ({
+      minutes: this.state.minutes - 1
+    })
+    :
+    this.setState ({
+      minutes: this.state.sessionLength
+    })
+  }
+
 
   handleClickStart = () => {
-    setTimeout(() => {this.setState ({
-      minutes: (this.state.minutes ? this.state.minutes - 1 : this.state.sessionLength)
-    })}, 1000)
-    setInterval(this.myTimerMinutes, 60 * 1000);
-    setInterval(this.myTimer, 1000);
+    setTimeout(this.mySetTimeout, 1000)
+    accurateInterval(this.myTimerMinutes, 60 * 1000);
+    accurateInterval(this.myTimerSeconds, 1000);
   }
 
   render() {
