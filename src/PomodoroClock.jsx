@@ -57,16 +57,16 @@ class PomodoroClock extends Component {
     })
   }
 
-  myTimerMinutes = () => {
-    this.state.minutes ?
-    this.setState ({
-      minutes: this.state.minutes - 1
-    })
-    :
-    this.setState ({
-      minutes: this.state.sessionLength
-    })
-  }
+  // myTimerMinutes = () => {
+  //   this.state.minutes ?
+  //   this.setState ({
+  //     minutes: this.state.minutes - 1
+  //   })
+  //   :
+  //   this.setState ({
+  //     minutes: this.state.sessionLength
+  //   })
+  // }
 
   myTimerSeconds = () => {
     this.state.seconds ?
@@ -96,15 +96,21 @@ class PomodoroClock extends Component {
     })
   }
 
+  myTimerMinutes = () => {
+    if (this.state.seconds === 0) {
+      this.setState ({
+        minutes: this.state.minutes - 1
+      })
+    }
+  }
 
   zxc = () => {
-    console.log(this.state.start_stop)
     if (this.state.start_stop) {
       if (this.state.minutes === this.state.sessionLength) {
       setTimeout(this.mySetTimeout, 1000)
       }
-      foo = accurateInterval(this.myTimerMinutes, 60 * 1000);
       foo1 = accurateInterval(this.myTimerSeconds, 1000);
+      foo = accurateInterval(this.myTimerMinutes, 1000);
     } else {
         foo.clear();
         foo1.clear();
