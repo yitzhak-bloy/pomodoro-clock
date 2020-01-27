@@ -30,31 +30,42 @@ class PomodoroClock extends Component {
     this.setState({
       minutes: this.state.sessionLength
     })
-    console.log('sds')
   }
 
   handleClickSessionDecrement = () => {
+    this.state.sessionLength < 60 ?
     this.setState ({
       sessionLength: this.state.sessionLength + 1
     })
+    :
+    console.log('not be able to set a session or break length to > 60')
   }
 
   handleClickSessionIncrement = () => {
+    this.state.sessionLength > 1 ?
     this.setState ({
       sessionLength: this.state.sessionLength - 1
     })
+    :
+    console.log('not be able to set a session or break length to <= 0')
   }
 
   handleClickbreakDecrement = () => {
+    this.state.breakLength < 60 ?
     this.setState ({
       breakLength: this.state.breakLength + 1
     })
+    :
+    console.log('not be able to set a session or break length to > 60')
   }
 
   handleClickbreakIncrement = () => {
+    this.state.breakLength > 1 ?
     this.setState ({
       breakLength: this.state.breakLength - 1
     })
+    :
+    console.log('not be able to set a session or break length to <= 0')
   }
 
   // myTimerMinutes = () => {
@@ -80,13 +91,8 @@ class PomodoroClock extends Component {
   }
 
   mySetTimeout = () => {
-    this.state.minutes ?
     this.setState ({
       minutes: this.state.minutes - 1
-    })
-    :
-    this.setState ({
-      minutes: this.state.sessionLength
     })
   }
 
@@ -133,6 +139,18 @@ class PomodoroClock extends Component {
   // }, 13 * 1000);
   }
 
+  handleClickReset = () => {
+    foo.clear();
+    foo1.clear();
+    this.setState ({
+      sessionLength: 25,
+      breakLength: 5,
+      minutes: 25,
+      seconds: 0,
+      start_stop: true
+    })
+  }
+
   render() {
     return (
       <div className="PomodoroClock">
@@ -153,6 +171,7 @@ class PomodoroClock extends Component {
           minutes={this.state.minutes}
           seconds={this.state.seconds}
           handleClickStart={this.handleClickStartStop}
+          handleClickReset={this.handleClickReset}
         />
       </div>
     );
