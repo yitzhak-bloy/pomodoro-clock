@@ -100,7 +100,9 @@ class PomodoroClock extends Component {
   zxc = () => {
     console.log(this.state.start_stop)
     if (this.state.start_stop) {
+      if (this.state.minutes === this.state.sessionLength) {
       setTimeout(this.mySetTimeout, 1000)
+      }
       foo = accurateInterval(this.myTimerMinutes, 60 * 1000);
       foo1 = accurateInterval(this.myTimerSeconds, 1000);
     } else {
