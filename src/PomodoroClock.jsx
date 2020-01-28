@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 // import { accurateInterval } from 'accurate-interval'
 
-
-
 import Session from './components/Session';
 import Break from './components/Break';
 import Timer from './components/Timer';
@@ -12,7 +10,6 @@ const accurateInterval = require('accurate-interval');
 
 let foo;
 let foo1;
-
 
 class PomodoroClock extends Component {
   constructor(props) {
@@ -35,7 +32,8 @@ class PomodoroClock extends Component {
   handleClickSessionDecrement = () => {
     this.state.sessionLength < 60 ?
     this.setState ({
-      sessionLength: this.state.sessionLength + 1
+      sessionLength: this.state.sessionLength + 1,
+      minutes: this.state.minutes + 1
     })
     :
     console.log('not be able to set a session or break length to > 60')
@@ -44,7 +42,8 @@ class PomodoroClock extends Component {
   handleClickSessionIncrement = () => {
     this.state.sessionLength > 1 ?
     this.setState ({
-      sessionLength: this.state.sessionLength - 1
+      sessionLength: this.state.sessionLength - 1,
+      minutes: this.state.minutes - 1
     })
     :
     console.log('not be able to set a session or break length to <= 0')
