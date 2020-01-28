@@ -68,17 +68,6 @@ class PomodoroClock extends Component {
     console.log('not be able to set a session or break length to <= 0')
   }
 
-  // myTimerMinutes = () => {
-  //   this.state.minutes ?
-  //   this.setState ({
-  //     minutes: this.state.minutes - 1
-  //   })
-  //   :
-  //   this.setState ({
-  //     minutes: this.state.sessionLength
-  //   })
-  // }
-
   myTimerSeconds = () => {
     this.state.seconds ?
     this.setState ({
@@ -128,20 +117,16 @@ class PomodoroClock extends Component {
     this.setState ({
       start_stop: !this.state.start_stop
     })
-
-    // setTimeout(this.mySetTimeout, 1000)
-    // const foo = accurateInterval(this.myTimerMinutes, 60 * 1000);
-    // const foo1 = accurateInterval(this.myTimerSeconds, 1000);
-
-  //   setTimeout(function() {
-  //     foo.clear();
-  //     foo1.clear();
-  // }, 13 * 1000);
   }
 
   handleClickReset = () => {
-    foo.clear();
-    foo1.clear();
+    if (foo1 && foo) {
+      foo.clear();
+      foo1.clear();
+    } else {
+      console.log('sfds')
+    }
+
     this.setState ({
       sessionLength: 25,
       breakLength: 5,
