@@ -8,7 +8,6 @@ const accurateInterval = require('accurate-interval');
 
 // import './PomodoroClock.css';
 
-let foo;
 let foo1;
 
 class PomodoroClock extends Component {
@@ -68,24 +67,6 @@ class PomodoroClock extends Component {
     console.log('not be able to set a session or break length to <= 0')
   }
 
-  myTimerSeconds = () => {
-    if (this.state.seconds === 0 && this.state.minutes === 0) {
-      this.setState ({
-        seconds: 0
-      })
-    } else {
-        this.state.seconds ?
-        this.setState ({
-          seconds: this.state.seconds - 1
-        })
-        :
-        this.setState ({
-          seconds: 59
-        })
-    }
-
-  }
-
   mySetTimeout = () => {
     this.setState ({
       minutes: this.state.minutes - 1
@@ -98,27 +79,29 @@ class PomodoroClock extends Component {
     })
   }
 
-  myTimerMinutes = () => {
+  myTimer = () => {
     if (this.state.seconds === 0 && this.state.minutes === 0) {
       this.setState ({
-        minutes: this.state.breakLength
+        minutes: this.state.breakLength,
+        seconds: 0,
+        timerLabel: 'break'
       })
-    } else if (this.state.seconds === 0) {
+    } else if (this.state.seconds) {
       this.setState ({
-        minutes: this.state.minutes - 1
+        seconds: this.state.seconds - 1
+      })
+    } else if (!this.state.seconds) {
+      this.setState ({
+        minutes: this.state.minutes - 1,
+        seconds: 59
       })
     }
   }
 
   zxc = () => {
     if (this.state.start_stop) {
-      if (this.state.minutes === this.state.sessionLength) {
-      setTimeout(this.mySetTimeout, 1000)
-      }
-      foo1 = accurateInterval(this.myTimerSeconds, 1000);
-      foo = accurateInterval(this.myTimerMinutes, 1000);
+      foo1 = accurateInterval(this.myTimer, 1000);
     } else {
-        foo.clear();
         foo1.clear();
     }
   }
@@ -131,20 +114,18 @@ class PomodoroClock extends Component {
   }
 
   handleClickReset = () => {
-    if (foo1 && foo) {
-      foo.clear();
+    if (foo1) {
       foo1.clear();
     } else {
       console.log('sfds')
     }
-
-    this.setState ({
-      sessionLength: 25,
-      breakLength: 5,
-      minutes: 25,
-      seconds: 0,
-      start_stop: true
-    })
+      this.setState ({
+        sessionLength: 25,
+        breakLength: 5,
+        minutes: 25,
+        seconds: 0,
+        start_stop: true
+      })
   }
 
   render() {
