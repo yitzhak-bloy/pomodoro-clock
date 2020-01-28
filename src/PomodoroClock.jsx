@@ -19,7 +19,8 @@ class PomodoroClock extends Component {
       breakLength: 5,
       minutes: 0,
       seconds: 0,
-      start_stop: true
+      start_stop: true,
+      timerLabel: 'session'
     };
   }
 
@@ -68,14 +69,21 @@ class PomodoroClock extends Component {
   }
 
   myTimerSeconds = () => {
-    this.state.seconds ?
-    this.setState ({
-      seconds: this.state.seconds - 1
-    })
-    :
-    this.setState ({
-      seconds: 59
-    })
+    if (this.state.seconds === 0 && this.state.minutes === 0) {
+      this.setState ({
+        seconds: 0
+      })
+    } else {
+        this.state.seconds ?
+        this.setState ({
+          seconds: this.state.seconds - 1
+        })
+        :
+        this.setState ({
+          seconds: 59
+        })
+    }
+
   }
 
   mySetTimeout = () => {
@@ -91,7 +99,11 @@ class PomodoroClock extends Component {
   }
 
   myTimerMinutes = () => {
-    if (this.state.seconds === 0) {
+    if (this.state.seconds === 0 && this.state.minutes === 0) {
+      this.setState ({
+        minutes: this.state.breakLength
+      })
+    } else if (this.state.seconds === 0) {
       this.setState ({
         minutes: this.state.minutes - 1
       })
@@ -156,6 +168,7 @@ class PomodoroClock extends Component {
           seconds={this.state.seconds}
           handleClickStart={this.handleClickStartStop}
           handleClickReset={this.handleClickReset}
+          timerLabel={this.state.timerLabel}
         />
       </div>
     );
