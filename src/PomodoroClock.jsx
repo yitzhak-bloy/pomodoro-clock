@@ -80,21 +80,27 @@ class PomodoroClock extends Component {
   }
 
   myTimer = () => {
-    if (this.state.seconds === 0 && this.state.minutes === 0) {
+    if (this.state.seconds === 0 && this.state.minutes === 0 && this.state.timerLabel === 'session') {
       this.setState ({
         minutes: this.state.breakLength,
         seconds: 0,
         timerLabel: 'break'
       })
+    } else if (this.state.seconds === 0 && this.state.minutes === 0 && this.state.timerLabel === 'break') {
+        this.setState ({
+          minutes: this.state.sessionLength,
+          seconds: 0,
+          timerLabel: 'session'
+        })
     } else if (this.state.seconds) {
-      this.setState ({
-        seconds: this.state.seconds - 1
-      })
+        this.setState ({
+          seconds: this.state.seconds - 1
+        })
     } else if (!this.state.seconds) {
-      this.setState ({
-        minutes: this.state.minutes - 1,
-        seconds: 59
-      })
+        this.setState ({
+          minutes: this.state.minutes - 1,
+          seconds: 59
+        })
     }
   }
 
