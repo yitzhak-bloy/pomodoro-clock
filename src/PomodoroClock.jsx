@@ -80,12 +80,16 @@ class PomodoroClock extends Component {
         seconds: 0,
         timerLabel: 'break'
       })
+      const sound = document.getElementById("beep");
+      sound.play();
     } else if (this.state.seconds === 0 && this.state.minutes === 0 && this.state.timerLabel === 'break') {
         this.setState ({
           minutes: this.state.sessionLength,
           seconds: 0,
           timerLabel: 'session'
         })
+        const sound = document.getElementById("beep");
+        sound.play();
     } else if (this.state.seconds) {
         this.setState ({
           seconds: this.state.seconds - 1
@@ -151,6 +155,7 @@ class PomodoroClock extends Component {
           handleClickReset={this.handleClickReset}
           timerLabel={this.state.timerLabel}
         />
+        <audio id="beep" src={'https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg'} />
       </div>
     );
   }
