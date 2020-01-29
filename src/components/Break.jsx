@@ -7,7 +7,7 @@ function Breack({ breakLength, handleClickDecrement, handleClickIncrement }) {
         <div id="break-label">Break Length</div>
         <button id="break-decrement" onClick={handleClickDecrement}>break-decrement</button>
         <button id="break-increment" onClick={handleClickIncrement}>break-increment</button>
-        <div id="Break Length">{breakLength}</div>
+        <div id="break-length">{breakLength}</div>
     </div>
   );
 }

@@ -8,7 +8,7 @@ const Session = ({ sessionLength, handleClickDecrement, handleClickIncrement }) 
       <div id="session-label">Session Length</div>
       <button onClick={handleClickDecrement} id="session-decrement">session-decrement</button>
       <button onClick={handleClickIncrement} id="session-increment">session-increment</button>
-      <div id="Session Length">{sessionLength}</div>
+      <div id="session-length">{sessionLength}</div>
     </div>
   );
 }
