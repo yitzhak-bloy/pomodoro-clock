@@ -8,7 +8,7 @@ const accurateInterval = require('accurate-interval');
 
 // import './PomodoroClock.css';
 
-let foo1;
+let interval;
 
 class PomodoroClock extends Component {
   constructor(props) {
@@ -67,12 +67,6 @@ class PomodoroClock extends Component {
     console.log('not be able to set a session or break length to <= 0')
   }
 
-  mySetTimeout = () => {
-    this.setState ({
-      minutes: this.state.minutes - 1
-    })
-  }
-
   handleBreakLength = () => {
     this.setState({
       minutes: this.state.breakLength
@@ -104,24 +98,24 @@ class PomodoroClock extends Component {
     }
   }
 
-  zxc = () => {
+  handleMyTimer = () => {
     if (this.state.start_stop) {
-      foo1 = accurateInterval(this.myTimer, 1000);
+      interval = accurateInterval(this.myTimer, 1000);
     } else {
-        foo1.clear();
+      interval.clear();
     }
   }
 
   handleClickStartStop = () => {
-    this.zxc()
+    this.handleMyTimer()
     this.setState ({
       start_stop: !this.state.start_stop
     })
   }
 
   handleClickReset = () => {
-    if (foo1) {
-      foo1.clear();
+    if (interval) {
+      interval.clear();
     } else {
       console.log('sfds')
     }
