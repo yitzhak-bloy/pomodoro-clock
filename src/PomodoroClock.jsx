@@ -120,6 +120,8 @@ class PomodoroClock extends Component {
   handleClickReset = () => {
     if (interval) {
       interval.clear();
+      this.audioRef.current.pause()
+      this.audioRef.current.currentTime = 0
     } else {
       console.log('sfds')
     }
