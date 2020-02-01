@@ -139,23 +139,25 @@ class PomodoroClock extends Component {
   render() {
     return (
       <div className="PomodoroClock">
-        <div className='determineLength'>
-          <Session 
-            className='determineLength'
-            handleClickDecrement={this.handleClickSessionDecrement} 
-            handleClickIncrement={this.handleClickSessionIncrement} 
-            sessionLength={this.state.sessionLength}
-          />
+        <div>
+          <div className='determineLength'>
+            <Session 
+              className='determineLength'
+              handleClickDecrement={this.handleClickSessionDecrement} 
+              handleClickIncrement={this.handleClickSessionIncrement} 
+              sessionLength={this.state.sessionLength}
+            />
+          </div>
+          <div className='determineLength'>
+            <Break 
+              className='determineLength'
+              handleClickDecrement={this.handleClickbreakDecrement} 
+              handleClickIncrement={this.handleClickbreakIncrement} 
+              breakLength={this.state.breakLength}
+            />
+          </div>
         </div>
-        <div className='determineLength'>
-          <Break 
-            className='determineLength'
-            handleClickDecrement={this.handleClickbreakDecrement} 
-            handleClickIncrement={this.handleClickbreakIncrement} 
-            breakLength={this.state.breakLength}
-          />
-        </div>
-        <h1>Timer</h1>
+        {/* <h1>Timer</h1> */}
         <Timer
           minutes={this.state.minutes}
           seconds={this.state.seconds}

@@ -1,8 +1,16 @@
 .determineLength {
-    border: 0.2px solid rgb(226, 25, 25);    
+    border: 1px solid rgb(226, 25, 25);   
+    border-radius: 35px;
     font-size: 250%;
+    background-color: rgb(240, 65, 65, 0.5);
 }
 
 .buttonLength {
   font-size: 45px;
 }
+
+.PomodoroClock {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
