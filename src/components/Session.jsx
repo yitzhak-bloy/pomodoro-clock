@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Session.css';
+import './Session.css';
 
 
 const Session = ({ sessionLength, handleClickDecrement, handleClickIncrement }) => {
@@ -7,8 +7,8 @@ const Session = ({ sessionLength, handleClickDecrement, handleClickIncrement }) 
     <div className="session">
       <div id="session-label">Session Length</div>
       <button onClick={handleClickDecrement} id="session-decrement" className='buttonLength'>&#8657;</button>
-      <button onClick={handleClickIncrement} id="session-increment" className='buttonLength'>&#8659;</button>
       <div id="session-length">{sessionLength}</div>
+      <button onClick={handleClickIncrement} id="session-increment" className='buttonLength'>&#8659;</button>
     </div>
   );
 }

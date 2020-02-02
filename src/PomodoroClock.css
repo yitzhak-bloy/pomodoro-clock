@@ -1,22 +1,25 @@
+button {
+  color: rgb(243, 210, 138);
+  font-size: 40px;
+  background-color: red;
+  padding: 2%;
+  border-color: rgb(243, 210, 138);
+  border-radius: 55px;
+}
+
 .determineLength {
     border: 1px solid rgb(226, 25, 25);   
-    border-radius: 35px;
+    border-radius: 5px;
     font-size: 250%;
     background-color: rgb(240, 65, 65, 0.5);
 }
 
 .buttonLength {
   font-size: 45px;
-
-  /* align-items: center;
-      justify-content: center; */
-
-
 }
 
 .PomodoroClock {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     display: grid;
   }
@@ -24,6 +27,6 @@
   .aaa {
     display: flex;
     flex-direction: row;
-    padding: 10%;
+    padding: 5%;
     justify-content: space-around;
   }

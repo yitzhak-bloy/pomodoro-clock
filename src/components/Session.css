@@ -1,0 +1,21 @@
+.session {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1px 15px;
+}
+
+.session > div:nth-child(1) {
+  grid-column: 1/4;
+}
+
+#session-label {
+  display: flex;
+  justify-content: center;
+  font-size: 90%;
+}
+
+#session-length {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,21 @@
+.breack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1px 15px;
+}
+
+.breack > div:nth-child(1) {
+  grid-column: 1/4;
+}
+
+#break-label {
+  display: flex;
+  justify-content: center;
+  font-size: 88%;
+}
+
+#break-length {
+  display: flex;
+  justify-content: center;
+}

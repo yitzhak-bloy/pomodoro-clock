@@ -155,7 +155,6 @@ class PomodoroClock extends Component {
             />
           </div>
         </div>
-        {/* <h1>Timer</h1> */}
         <Timer
           minutes={this.state.minutes}
           seconds={this.state.seconds}
