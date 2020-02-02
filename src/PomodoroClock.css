@@ -7,10 +7,23 @@
 
 .buttonLength {
   font-size: 45px;
+
+  /* align-items: center;
+      justify-content: center; */
+
+
 }
 
 .PomodoroClock {
     display: flex;
     /* justify-content: center; */
     align-items: center;
+    display: grid;
+  }
+
+  .aaa {
+    display: flex;
+    flex-direction: row;
+    padding: 10%;
+    justify-content: space-around;
   }

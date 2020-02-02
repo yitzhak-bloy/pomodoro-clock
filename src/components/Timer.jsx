@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Session.css';
+import './Timer.css';
 
 function Timer({minutes, seconds, handleClickStart, handleClickReset, timerLabel}) {
   return (

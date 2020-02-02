@@ -139,10 +139,9 @@ class PomodoroClock extends Component {
   render() {
     return (
       <div className="PomodoroClock">
-        <div>
+        <div className='aaa'>
           <div className='determineLength'>
             <Session 
-              className='determineLength'
               handleClickDecrement={this.handleClickSessionDecrement} 
               handleClickIncrement={this.handleClickSessionIncrement} 
               sessionLength={this.state.sessionLength}
@@ -150,7 +149,6 @@ class PomodoroClock extends Component {
           </div>
           <div className='determineLength'>
             <Break 
-              className='determineLength'
               handleClickDecrement={this.handleClickbreakDecrement} 
               handleClickIncrement={this.handleClickbreakIncrement} 
               breakLength={this.state.breakLength}
