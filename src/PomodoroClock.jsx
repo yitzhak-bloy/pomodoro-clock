@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import './PomodoroClock.css';
 
-// import { accurateInterval } from 'accurate-interval'
-
 import Session from './components/Session';
 import Break from './components/Break';
 import Timer from './components/Timer';
 const accurateInterval = require('accurate-interval');
-
 
 let interval;
 
@@ -33,58 +30,48 @@ class PomodoroClock extends Component {
   }
 
   handleClickSessionDecrement = () => {
-    this.state.sessionLength < 60 ?
-    this.setState ({
-      sessionLength: this.state.sessionLength + 1,
-      minutes: this.state.minutes + 1
-    })
-    :
-    console.log('not be able to set a session or break length to > 60')
+    if (this.state.sessionLength < 60) {
+      this.setState ({
+        sessionLength: this.state.sessionLength + 1,
+        minutes: this.state.minutes + 1
+      })
+    }
   }
 
   handleClickSessionIncrement = () => {
-    this.state.sessionLength > 1 ?
-    this.setState ({
-      sessionLength: this.state.sessionLength - 1,
-      minutes: this.state.minutes - 1
-    })
-    :
-    console.log('not be able to set a session or break length to <= 0')
+    if (this.state.sessionLength > 1) {
+      this.setState ({
+        sessionLength: this.state.sessionLength - 1,
+        minutes: this.state.minutes - 1
+      })
+    }
   }
 
   handleClickbreakDecrement = () => {
-    this.state.breakLength < 60 ?
-    this.setState ({
-      breakLength: this.state.breakLength + 1
-    })
-    :
-    console.log('not be able to set a session or break length to > 60')
+    if (this.state.breakLength < 60 ) {
+      this.setState ({
+        breakLength: this.state.breakLength + 1
+      })
+    }
   }
 
   handleClickbreakIncrement = () => {
-    this.state.breakLength > 1 ?
-    this.setState ({
-      breakLength: this.state.breakLength - 1
-    })
-    :
-    console.log('not be able to set a session or break length to <= 0')
+    if (this.state.breakLength > 1) {
+      this.setState ({
+        breakLength: this.state.breakLength - 1
+      })
+    }
   }
 
-  handleBreakLength = () => {
-    this.setState({
-      minutes: this.state.breakLength
-    })
-  }
-
-  myTimer = () => {
-    if (this.state.seconds === 0 && this.state.minutes === 0 && this.state.timerLabel === 'session') {
+  timer = () => {
+    if (!this.state.seconds && !this.state.minutes && this.state.timerLabel === 'session') {
       this.setState ({
         minutes: this.state.breakLength,
         seconds: 0,
         timerLabel: 'break'
       })
-        this.audioRef.current.play();
-    } else if (this.state.seconds === 0 && this.state.minutes === 0 && this.state.timerLabel === 'break') {
+      this.audioRef.current.play();
+    } else if (!this.state.seconds && !this.state.minutes && this.state.timerLabel === 'break') {
         this.setState ({
           minutes: this.state.sessionLength,
           seconds: 0,
@@ -103,16 +90,18 @@ class PomodoroClock extends Component {
     }
   }
 
-  handleMyTimer = () => {
+  handleTimer = () => {
     if (this.state.start_stop) {
-      interval = accurateInterval(this.myTimer, 1000);
+      interval = accurateInterval(this.timer, 1000);
     } else {
       interval.clear();
+      this.audioRef.current.pause()
+      this.audioRef.current.currentTime = 0
     }
   }
 
   handleClickStartStop = () => {
-    this.handleMyTimer()
+    this.handleTimer()
     this.setState ({
       start_stop: !this.state.start_stop
     })
@@ -123,23 +112,21 @@ class PomodoroClock extends Component {
       interval.clear();
       this.audioRef.current.pause()
       this.audioRef.current.currentTime = 0
-    } else {
-      console.log('sfds')
     }
-      this.setState ({
-        sessionLength: 25,
-        breakLength: 5,
-        minutes: 25,
-        seconds: 0,
-        start_stop: true,
-        timerLabel: 'session'
-      })
+    this.setState ({
+      sessionLength: 25,
+      breakLength: 5,
+      minutes: 25,
+      seconds: 0,
+      start_stop: true,
+      timerLabel: 'session'
+    })
   }
 
   render() {
     return (
       <div className="PomodoroClock">
-        <div className='aaa'>
+        <div className='sessionAndBreak'>
           <div className='determineLength'>
             <Session 
               handleClickDecrement={this.handleClickSessionDecrement} 
