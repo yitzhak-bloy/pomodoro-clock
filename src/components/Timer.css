@@ -1,8 +1,6 @@
 .timer {
-  border: 1px solid rgb(226, 25, 25);   
   border-radius: 35px;
   font-size: 250%;
-  background-color: rgb(240, 65, 65, 0.5);
   display: flex;
   justify-content: center;
   align-items: center; 
@@ -31,3 +29,14 @@
   justify-content: center;
 }
 
+/* .butten {
+  width: 70%
+ }
+
+ .start_stop {
+   color: antiquewhite;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end; 
+
+ } */
